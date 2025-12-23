@@ -1,0 +1,124 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+
+const emit = defineEmits(['close']);
+
+const toggleClose = () => {
+    emit('close');
+}
+</script>
+
+<template>
+    <div class="backdrop" @click.self="toggleClose">
+        <div class="modal">
+            <form action="">
+                <h2>Create New Session</h2>
+                <div class="input-group">
+                    <label for="">Event Name</label>
+                    <input type="text" placeholder="Lab Lesson">
+                </div>
+                <div class="input-group">
+                    <label for="">Subject/Course</label>
+                    <input type="text">
+                </div>
+                <div class="input-group">
+                    <label for="">Event Type</label>
+                    <input type="text">
+                </div>
+                <div class="input-group">
+                    <label for="">Date</label>
+                    <input type="date">
+                </div>
+                <div class="input-group">
+                    <label for="">Start Time</label>
+                    <input type="time">
+                </div>
+                <div class="action-buttons">
+                    <button class="cancel" @click="toggleClose">Cancel</button>
+                    <RouterLink to="/session" class="create"><button type="submit" class="create">Create Session</button></RouterLink>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</template>
+<style scoped>
+.modal {
+    position: absolute;
+    background-color: var(--l-surface);
+    width: 500px;
+    height: auto;
+    padding: 27px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal form h2 {
+    color: var(--l-primary-text);
+}
+
+.modal form label {
+    color: var(--l-primary-text);
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.modal form input {
+    padding: 8px 10px;
+    font-size: 1rem;
+}
+
+.modal form .action-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.cancel {
+    background-color: var(--l-secondary-button-bg);
+    font-size: 1rem;
+    padding: 9px 17px;
+    width: 100%;
+    color: var(--l-primary-text);
+    border: var(--l-borders);
+    border-radius: 10px;
+}
+
+.create {
+    margin-left: 10px;
+    font-size: 1rem;
+    padding: 9px 17px;
+    width: 100%;
+    color: var(--d-primary-text);
+    background-color: var(--l-primary-button-bg);
+    border-radius: 10px;
+    border: none;
+}
+
+.backdrop {
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    width: 100%;
+    height: 100%;
+    z-index: 2
+}
+</style>

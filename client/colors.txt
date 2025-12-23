@@ -1,0 +1,29 @@
+| Hex       | Common Color Name                 |
+| --------- | --------------------------------- |
+| `#F1F3F5` | **Ghost Slate / Light Cool Gray** |
+| `#FFFFFF` | **Pure White**                    |
+| `#E9ECEF` | **Platinum Gray**                 |
+| `#1F2328` | **Charcoal Black**                |
+| `#636C76` | **Slate Gray**                    |
+| `#E6F4F1` | **Mint Mist**                     |
+| `#2D6A4F` | **Bottle Green**                  |
+| `#F8EDEB` | **Blush Beige**                   |
+| `#641E16` | **Dark Maroon**                   |
+| `#3D5A80` | **Steel Blue**                    |
+| `#4D7C7A` | **Muted Teal**                    |
+| `#F0F2F5` | **Light Ash Gray**                |
+
+| Hex       | Common Color Name              |
+| --------- | ------------------------------ |
+| `#0B0E14` | **Midnight Navy / Rich Black** |
+| `#161B22` | **Gunmetal Black**             |
+| `#30363D` | **Dark Slate Gray**            |
+| `#F0F6FC` | **Off White / Alice Blue**     |
+| `#8B9EB7` | **Blue Gray**                  |
+| `#22333B` | **Dark Blue Slate**            |
+| `#A9D6E5` | **Pale Sky Blue**              |
+| `#2D1B1E` | **Dark Wine**                  |
+| `#E5989B` | **Dusty Rose**                 |
+| `#3D5A80` | **Steel Blue** (same as light) |
+| `#21262D` | **Eerie Black**                |
+| `#0D1117` | **Near Black / GitHub Dark**   |

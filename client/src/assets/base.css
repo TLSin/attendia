@@ -1,54 +1,59 @@
-/* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
+  /* light mode colors*/
+  --l-primary-background: #f1f3f5;
+  --l-surface: #ffffff;
+  --l-borders: 1px solid #e9ecef;
+  --l-primary-text: #1f2328;
+  --l-secondary-text: #636c76;
+  --l-present-status-bg: #e6f4f1;
+  --l-present-text: #2d6a4f;
+  --l-absent-status-bg: #f8edeb;
+  --l-absent-text: #641e16;
+  --l-primary-button-bg: #3d5a80;
+  --l-primray-button-text: #ffffff;
+  --l-secondary-button-bg: #E9ECEF;
+  --l-secondary-button-text: #1f2328;
+  --l-input-fields-bg: #f0f2f5;
+  --l-input-fields-text: #636c76;
 
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
+  /* dark mode colors */
+  --d-primary-background: #0b0e14;
+  --d-surface: #161b22;
+  --d-borders: 1px solid #30363d;
+  --d-primary-text: #f0f6fc;
+  --d-secondary-text: #8b9eb7;
+  --d-present-status-bg: #22333b;
+  --d-present-text: #a9d6e5;
+  --d-absent-status-bg: #2d1b1e;
+  --d-absent-text: #e5989b;
+  --d-primary-button-bg: #3d5a80;
+  --d-primray-button-text: #f0f6fc;
+  --d-secondary-button-bg: #21262d;
+  --d-secondary-button-text: #f0f6fc;
+  --d-input-fields-bg: #0d1117;
+  --d-input-fields-text: #8b9eb7;
 
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+  /* Status pill color (e.g. Teacher/Student)*/
+  --teacher-bg: #e6f4f1;
+  --teacher-text: #2d6a4f;
+  --student-bg: #f8edeb;
+  --student-text: #641E16
 }
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
+  --color-background: var(--l-primary-background);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+  --color-border: var(--l-borders);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+    --color-background: var(--d-primary-background);
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+  --color-border: var(--d-borders);
   }
-}
+} */
 
 *,
 *::before,
@@ -60,7 +65,7 @@
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
+  color: var(--l-primary-text);
   background: var(--color-background);
   transition:
     color 0.5s,
