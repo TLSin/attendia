@@ -1,9 +1,4 @@
 <script setup>
-const contents = [
-    { id: 1, title: 'Scan Students QR Code', description: 'Scan Students QR code to mark their attendance', container: true, },
-    { id: 2, title: 'Scan QR Code', description: 'Scan Students QR code to mark their attendance', container: true, },
-]
-
 const emit = defineEmits(['close-modal']);
 
 const toggleScanner = () => {

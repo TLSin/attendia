@@ -15,15 +15,28 @@ const router = createRouter({
       component: () => import('../views/DashboardView.vue'),
     },
     {
-      path:'/download',
-      name:'download',
+      path: '/download',
+      name: 'download',
       component: () => import('../views/DownloadView.vue')
     }
     ,
     {
-      path:'/session',
-      name:'session',
+      path: '/session',
+      name: 'session',
       component: () => import('../views/SessionDashboardView.vue'),
+    }
+    ,
+    {
+      path: '/login/:mode',
+      name: 'login',
+      component: () => import('../views/LoginView.vue'),
+      props: true,
+    }
+    ,
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignUpView.vue'),
     }
     ,
     {
