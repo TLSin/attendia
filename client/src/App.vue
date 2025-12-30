@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
 import NavBar from './components/NavBar.vue';
-import CreateSessionModal from './components/CreateSessionModal.vue';
 </script>
 
 <template>
@@ -19,6 +18,12 @@ import CreateSessionModal from './components/CreateSessionModal.vue';
 main {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  margin-top: 4.5rem;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 </style>

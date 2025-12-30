@@ -31,11 +31,12 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    /* background-color: linear-gradient(0deg, transparent, transparent 30% rgb(122, 122, 122)); */
-    background-color: hsl(160, 83%, 84%);
+    background: linear-gradient(0deg, transparent 0%, rgba(150, 201, 255, 0) 40%, rgba(150, 201, 255, 0.548) 50%, rgba(150, 200, 255, 0.0) 60%, transparent 100%);
     transform: rotate(-45deg);
     transition: all 0.5s ease;
     opacity: 0;
+    filter: blur(5px);
+    mix-blend-mode: luminosity;
 }
 
 .card:hover {

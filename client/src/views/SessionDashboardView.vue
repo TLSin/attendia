@@ -45,7 +45,6 @@ const toggleEvent = () => {
         title.value = 'Scan QR Code';
         description.value = 'Students can scan this QR code to mark their attendance';
     }
-
 }
 </script>
 <template>
@@ -57,7 +56,6 @@ const toggleEvent = () => {
             <div class="dashboard-info">
                 <h1>Lab Lesson</h1>
                 <h3>CISCO 01</h3>
-                <!-- Use PrimeVue Divider Here -->
                 <p>12/16/2025 * 08:03 AM * Active</p>
             </div>
             <div class="action-btn">
@@ -110,6 +108,7 @@ const toggleEvent = () => {
         </template>
     </DynamicModal>
 </template>
+
 <style scoped>
 .dashboard-container {
     width: 1280px;

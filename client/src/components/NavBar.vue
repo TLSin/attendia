@@ -28,11 +28,10 @@ import StatusPill from '@/components/icons/StatusPill.vue'
     height: 4.5rem;
     display: flex;
     justify-content: center;
-    width: 100dvw;
+    width: 100vw;
+    top: 0;
     border-bottom: var(--l-borders);
     position: sticky;
-    top: 0;
-    bottom: 0;
     z-index: 10;
 }
 

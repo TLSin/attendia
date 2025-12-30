@@ -1,5 +1,7 @@
 <script setup>
 import RoleCard from '@/components/RoleCard.vue';
+import StudentLoginIcon from '@/components/icons/StudentLoginIcon.vue';
+import AdminIcon from '@/components/icons/AdminIcon.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -16,7 +18,8 @@ const toggleLogIn = (mode) => {
     <div class="card-container">
         <RoleCard role="teacher" class="card" @click="toggleLogIn('teacher')">
             <template v-slot:role>
-                <div class="icon">
+                <div class="icon teacher">
+                    <AdminIcon />
                 </div>
                 <div class="role">
                     <h1>Teacher/Organizer</h1>
@@ -34,7 +37,8 @@ const toggleLogIn = (mode) => {
         </RoleCard>
         <RoleCard role="student" class="card" @click="toggleLogIn('student')">
             <template v-slot:role>
-                <div class="icon">
+                <div class="icon student">
+                    <StudentLoginIcon />
                 </div>
                 <div class="role">
                     <h1>Student</h1>
@@ -64,10 +68,20 @@ const toggleLogIn = (mode) => {
 }
 
 .icon {
-    background-color: var(--l-primary-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 85px;
     height: 85px;
     border-radius: 50%;
+}
+
+.icon.teacher{
+    background-color: rgba(0, 132, 255, 0.096);
+}
+
+.icon.student{
+    background-color: rgba(172, 255, 146, 0.267);
 }
 
 .role {

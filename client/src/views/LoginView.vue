@@ -24,7 +24,6 @@ const value = ref(null)
             </div>
             <h1>{{ mode === 'teacher' ? 'Teacher Login' : 'Student Registeration' }}</h1>
             <p>Create you profile to generate your QR Code</p>
-
             <form class="form" v-if="mode === 'teacher'">
                 <input type="text" placeholder="Username" class="textbox">
                 <input type="password" placeholder="Password" class="textbox">
@@ -94,8 +93,6 @@ const value = ref(null)
     color: #ffffff;
 }
 
-
-
 .form {
     width: 80%;
     display: flex;
@@ -105,11 +102,12 @@ const value = ref(null)
 }
 
 .textbox {
-    background-color: var(--l-surface);
+    background-color: var(--l-input-fields-bg);
     border: var(--l-borders);
     padding: 15px;
     border-radius: 10px;
     font-size: 1rem;
+    color: var(--l-primary-text);
 }
 
 .textbox::placeholder {

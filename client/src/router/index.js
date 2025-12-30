@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('../views/DashboardView.vue'),
     },
     {
+      path: '/student-dashboard',
+      name: '/student-dashboard',
+      component: () => import('../views/StudentDashboardView.vue'),
+    },
+    {
       path: '/download',
       name: 'download',
       component: () => import('../views/DownloadView.vue')
