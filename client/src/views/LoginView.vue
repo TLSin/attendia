@@ -2,6 +2,7 @@
 import AdminIcon from '@/components/icons/AdminIcon.vue';
 import StudentLoginIcon from '@/components/icons/StudentLoginIcon.vue';
 import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 defineProps({
     mode: {
@@ -10,8 +11,20 @@ defineProps({
     }
 })
 
-const value = ref(null)
+const username = ref('');
+const firstName = ref('');
+const lastName = ref('');
+const password = ref('');
+const section = ref('');
+const studentNum = ref('');
 
+const toggleSubmit = (mode) => {
+    if (mode == 'teacher') {
+        console.log("you've click me")
+    } else {
+
+    }
+}
 
 </script>
 
@@ -24,17 +37,28 @@ const value = ref(null)
             </div>
             <h1>{{ mode === 'teacher' ? 'Teacher Login' : 'Student Registeration' }}</h1>
             <p>Create you profile to generate your QR Code</p>
-            <form class="form" v-if="mode === 'teacher'">
-                <input type="text" placeholder="Username" class="textbox">
-                <input type="password" placeholder="Password" class="textbox">
+            <form class="form" v-if="mode === 'teacher'" @submit.prevent="toggleSubmit(mode)">
+                <input type="text" placeholder="Username" class="textbox" v-model="username">
+                <input type="password" placeholder="Password" class="textbox" v-model="password">
+                <button type="submit" class="box">Submit</button>
+                <p>Doesn't have a teacher/organizer account yet? <RouterLink to="/signup" class="link">Click here.
+                    </RouterLink>
+                </p>
+            </form>
+            <form class="form" v-else @submit.prevent="toggleSubmit(mode)">
+                <div class="name">
+                    <input type="text" name="name" placeholder="First Name" class="textbox" v-model="firstName">
+                    <input type="text" name="name" placeholder="Last Name" class="textbox" v-model="lastName">
+                </div>
+                <input type="text" name="section" placeholder="Section" class="textbox" v-model="section">
+                <input type="text" name="student-number" placeholder="Student Number" class="textbox" v-model="studentNum">
                 <button type="submit" class="box">Submit</button>
             </form>
-            <form class="form" v-else>
-                 <input type="text" name="name" placeholder="John Doe" class="textbox">
-                 <input type="text" name="section" placeholder="Section A" class="textbox">
-                 <input type="text" name="student-number" placeholder="AB123456789" class="textbox">
-                <button type="submit" class="box">Submit</button>
-            </form>
+
+            <h1>{{ username }}</h1>
+            <h1>{{ password }}</h1>
+            <h1>{{ section }}</h1>
+            <h1>{{ studentNum }}</h1>
         </div>
     </div>
 </template>
@@ -85,7 +109,6 @@ const value = ref(null)
 .box {
     border: var(--l-borders);
     background-color: var(--l-primary-button-bg);
-    --p-ripple-background: var(--p-blue-100);
     padding: 15px;
     border-radius: 10px;
     font-size: 1.2rem;
@@ -101,6 +124,23 @@ const value = ref(null)
     margin-top: 2rem;
 }
 
+.name{
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.name input{
+    background-color: var(--l-input-fields-bg);
+    border: var(--l-borders);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--l-primary-text);
+    width: 50%;
+}
+
 .textbox {
     background-color: var(--l-input-fields-bg);
     border: var(--l-borders);
@@ -111,6 +151,13 @@ const value = ref(null)
 }
 
 .textbox::placeholder {
+    color: var(--l-secondary-text);
+}
+
+.form p,
+.link {
+    font-size: 0.8rem;
+    text-decoration: none;
     color: var(--l-secondary-text);
 }
 </style>

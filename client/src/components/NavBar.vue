@@ -12,7 +12,6 @@ import StatusPill from '@/components/icons/StatusPill.vue'
             </div>
             <div class="links">
                 <RouterLink to="/dashboard" class="nav-links">Dashboard</RouterLink>
-                <RouterLink to="/about" class="nav-links">Reports</RouterLink>
                 <RouterLink to="/about" class="nav-links">About</RouterLink>
                 <StatusPill />
                 <RouterLink to="/about" class="nav-links">Exit</RouterLink>
