@@ -1,5 +1,59 @@
 <script setup>
 import AdminIcon from '@/components/icons/AdminIcon.vue';
+import Authentication from '@/services/Authentication';
+import { ref } from 'vue';
+
+const firstName = ref('');
+const lastName = ref('');
+const username = ref('');
+const password = ref('');
+
+const firstNameError = ref('');
+const lastNameError = ref('');
+const usernameError = ref('');
+const passwordError = ref('');
+const passwordLenngthError = ref('')
+
+const toggleSubmit = async () => {
+    try {
+        const fields = [
+            { field: firstName, error: firstNameError, label: "First Name" },
+            { field: lastName, error: lastNameError, label: "Last Name" },
+            { field: username, error: usernameError, label: "Username" },
+            { field: password, error: passwordError, label: "Password" },
+        ]
+
+        let hasError = false;
+
+        fields.forEach(f => f.error.value = '');
+
+        for (const f of fields) {
+            if (!f.field.value) {
+                f.error.value = `The ${f.label} must not be empty`;
+                hasError = true;
+            }
+        }
+
+        if (!hasError) {
+            if (password.value.length < 8) {
+                passwordLenngthError.value = "The password must be 8 or more characters long"
+            } else {
+                const response = await Authentication.register({
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    username: username.value,
+                    password: password.value,
+                })
+                passwordLenngthError.value = '';
+                // console.log(response.data)
+            }
+
+        }
+    }
+    catch (e) {
+        console.log(e.response?.data)
+    }
+}
 </script>
 
 <template>
@@ -8,15 +62,27 @@ import AdminIcon from '@/components/icons/AdminIcon.vue';
             <div class="icon">
                 <AdminIcon class="admin" />
             </div>
-            <h1>Teacher Registeration</h1>
+            <h1>Teacher Registration</h1>
             <p>Create you profile to generate your QR Code</p>
             <form class="form" @submit.prevent="toggleSubmit(mode)">
                 <div class="name">
-                    <input type="text" placeholder="First Name">                    
-                    <input type="text" placeholder="Last Name">                    
+                    <div class="input-textbox errors">
+                        <input type="text" placeholder="First Name" v-model="firstName">
+                        <p class="error">{{ firstNameError }}</p>
+                    </div>
+                    <div class="input-textbox errors">
+                        <input type="text" placeholder="Last Name" v-model="lastName">
+                        <p class="error">{{ lastNameError }}</p>
+                    </div>
                 </div>
-                <input type="text" placeholder="Username" class="textbox" v-model="username">
-                <input type="password" placeholder="Password" class="textbox" v-model="password">
+                <div class="input-textbox errors">
+                    <input type="text" placeholder="Username" class="textbox" v-model="username">
+                    <p class="error">{{ usernameError }}</p>
+                </div>
+                <div class="input-textbox errors">
+                    <input type="password" placeholder="Password" class="textbox" v-model="password">
+                    <p class="error">{{ passwordError || passwordLenngthError }}</p>
+                </div>
                 <button type="submit" class="box">Submit</button>
                 <p>Already have a teacher/organizer account? <RouterLink to="/login/teacher" class="link">Click here.
                     </RouterLink>
@@ -37,7 +103,7 @@ import AdminIcon from '@/components/icons/AdminIcon.vue';
     display: flex;
     flex-direction: column;
     width: 450px;
-    height: 590px;
+    height: auto;
     background-color: var(--l-surface);
     border-radius: 15px;
     padding: 2rem;
@@ -82,25 +148,32 @@ import AdminIcon from '@/components/icons/AdminIcon.vue';
     width: 80%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     margin-top: 2rem;
 }
 
-.name{
+.name {
     display: flex;
     width: 100%;
     overflow: hidden;
     gap: 10px;
 }
 
-.name input{
+.name .input-textbox input {
     background-color: var(--l-input-fields-bg);
     border: var(--l-borders);
     padding: 15px;
     border-radius: 10px;
     font-size: 1rem;
     color: var(--l-primary-text);
-    width: 50%;
+    width: 100%;
+}
+
+.input-textbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
 }
 
 .textbox {
@@ -122,4 +195,10 @@ import AdminIcon from '@/components/icons/AdminIcon.vue';
     text-decoration: none;
     color: var(--l-secondary-text);
 }
+
+.input-textbox .error {
+    color: red;
+    font-size: 0.7rem;
+}
+
 </style>

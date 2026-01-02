@@ -54,11 +54,6 @@ const toggleSubmit = (mode) => {
                 <input type="text" name="student-number" placeholder="Student Number" class="textbox" v-model="studentNum">
                 <button type="submit" class="box">Submit</button>
             </form>
-
-            <h1>{{ username }}</h1>
-            <h1>{{ password }}</h1>
-            <h1>{{ section }}</h1>
-            <h1>{{ studentNum }}</h1>
         </div>
     </div>
 </template>
@@ -75,7 +70,7 @@ const toggleSubmit = (mode) => {
     display: flex;
     flex-direction: column;
     width: 450px;
-    height: 590px;
+    height: auto;
     background-color: var(--l-surface);
     border-radius: 15px;
     padding: 2rem;
@@ -120,7 +115,7 @@ const toggleSubmit = (mode) => {
     width: 80%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     margin-top: 2rem;
 }
 
