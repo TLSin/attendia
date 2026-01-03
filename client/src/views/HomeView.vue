@@ -27,10 +27,10 @@ const toggleLogIn = (mode) => {
                 </div>
                 <div class="description">
                     <ul>
-                        <li>Create and manage events</li>
-                        <li>Scan student QR codes</li>
-                        <li>Generate attendance reports</li>
-                        <li>Track attendance in real-time</li>
+                        <li><span class="indicator teacher">&nbsp;</span>Create and manage events</li>
+                        <li><span class="indicator teacher">&nbsp;</span>Scan student QR codes</li>
+                        <li><span class="indicator teacher">&nbsp;</span>Generate attendance reports</li>
+                        <li><span class="indicator teacher">&nbsp;</span>Track attendance in real-time</li>
                     </ul>
                 </div>
             </template>
@@ -46,10 +46,10 @@ const toggleLogIn = (mode) => {
                 </div>
                 <div class="description">
                     <ul>
-                        <li>Generate your personal QR code</li>
-                        <li>Scan event Qr codes</li>
-                        <li>View attendance history</li>
-                        <li>Download your QR code</li>
+                        <li><span class="indicator student">&nbsp;</span>Generate your personal QR code</li>
+                        <li><span class="indicator student">&nbsp;</span>Scan event Qr codes</li>
+                        <li><span class="indicator student">&nbsp;</span>View attendance history</li>
+                        <li><span class="indicator student">&nbsp;</span>Download your QR code</li>
                     </ul>
                 </div>
             </template>
@@ -107,9 +107,23 @@ const toggleLogIn = (mode) => {
     transform: translateX(-20px);
 }
 
-span {
-    width: 16px;
-    height: 16px;
-    background-color: green;
+.description ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicator.teacher {
+    background-color: rgb(0, 132, 255);
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+}
+
+.indicator.student {
+    background-color: rgb(172, 255, 146);
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
 }
 </style>
