@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router';
 <template>
     <div class="content-container">
         <div class="return-container">
-            <RouterLink to="/dashboard" class="link">← Go Back To Dashboard</RouterLink>
+            <RouterLink to="/dashboard/teacher" class="link">← Go Back To Dashboard</RouterLink>
         </div>
         <div class="header">
             <h1>Download Report</h1>

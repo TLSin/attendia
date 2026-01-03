@@ -50,13 +50,13 @@ const toggleEvent = () => {
 <template>
     <div class="dashboard-container">
         <div class="return-container">
-            <RouterLink to="/dashboard" class="link">← Go Back To Dashboard</RouterLink>
+            <RouterLink to="/dashboard/teacher" class="link">← Go Back To Dashboard</RouterLink>
         </div>
         <div class="header-container">
             <div class="dashboard-info">
                 <h1>Lab Lesson</h1>
                 <h3>CISCO 01</h3>
-                <p>12/16/2025 * 08:03 AM * Active</p>
+                <p>12/16/2025 &nbsp; <span class="indicator">&nbsp;</span> &nbsp; 08:03 AM  &nbsp; <span class="indicator">&nbsp;</span> &nbsp; Active</p>
             </div>
             <div class="action-btn">
                 <button class="action" id="btn1" @click="toggleScanner">Scan Students</button>
@@ -139,6 +139,18 @@ const toggleEvent = () => {
 
 .header-container .dashboard-info p {
     font-size: 1rem;
+}
+
+.header-container .dashboard-info p{
+    display: flex;
+    align-items: center;
+}
+
+.header-container .dashboard-info p .indicator {
+    background-color: grey;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
 }
 
 .action {

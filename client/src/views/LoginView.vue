@@ -1,8 +1,9 @@
 <script setup>
 import AdminIcon from '@/components/icons/AdminIcon.vue';
 import StudentLoginIcon from '@/components/icons/StudentLoginIcon.vue';
+import Authentication from '@/services/Authentication';
 import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
 defineProps({
     mode: {
@@ -11,18 +12,37 @@ defineProps({
     }
 })
 
-const username = ref('');
+const router = useRouter();
+
+const email = ref('');
 const firstName = ref('');
 const lastName = ref('');
 const password = ref('');
 const section = ref('');
 const studentNum = ref('');
 
-const toggleSubmit = (mode) => {
+const toggleSubmit = async (mode) => {
     if (mode == 'teacher') {
-        console.log("you've click me");
-    } else {
+        try {
+            const response = await Authentication.login({
+                email: email.value.trim(),
+                password: password.value.trim(),
+            });
 
+            console.log(response.data.user);
+            router.push()
+        } catch (error) {
+            console.log(error.response?.data?.error);
+        }
+    } else {
+        try {
+            const response = await Authentication.studentLogin({
+
+            });
+            console.log(response.data.user);
+        } catch (error) {
+            console.log(error.response?.data?.error);
+        }
     }
 }
 
@@ -38,7 +58,7 @@ const toggleSubmit = (mode) => {
             <h1>{{ mode === 'teacher' ? 'Teacher Login' : 'Student Registeration' }}</h1>
             <p>Create you profile to generate your QR Code</p>
             <form class="form" v-if="mode === 'teacher'" @submit.prevent="toggleSubmit(mode)">
-                <input type="text" placeholder="Username" class="textbox" v-model="username">
+                <input type="text" placeholder="Email" class="textbox" v-model="email">
                 <input type="password" placeholder="Password" class="textbox" v-model="password">
                 <button type="submit" class="box">Submit</button>
                 <p>Doesn't have a teacher/organizer account yet? <RouterLink to="/signup" class="link">Click here.

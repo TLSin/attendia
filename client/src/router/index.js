@@ -10,13 +10,13 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
+      path: '/dashboard/teacher',
+      name: 'dashboard-teacher',
       component: () => import('../views/DashboardView.vue'),
     },
     {
-      path: '/student-dashboard',
-      name: '/student-dashboard',
+      path: '/dashboard/student',
+      name: 'dashboard-student',
       component: () => import('../views/StudentDashboardView.vue'),
     },
     {

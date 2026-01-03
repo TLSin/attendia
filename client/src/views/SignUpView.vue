@@ -21,9 +21,9 @@ const passwordLengthError = ref('')
 const toggleSubmit = async () => {
     try {
         const fields = [
-            { field: firstName, error: firstNameError, label: "First Name" },
-            { field: lastName, error: lastNameError, label: "Last Name" },
-            { field: email, error: emailError, label: "email" },
+            { field: firstName, error: firstNameError, label: "First name" },
+            { field: lastName, error: lastNameError, label: "Last name" },
+            { field: email, error: emailError, label: "Email" },
             { field: password, error: passwordError, label: "Password" },
         ];
 
@@ -57,8 +57,8 @@ const toggleSubmit = async () => {
             }
         }
     }
-    catch (e) {
-        console.log(e.response?.data)
+    catch (error) {
+        console.log(error.response?.data)
     }
 }
 </script>

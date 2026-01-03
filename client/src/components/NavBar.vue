@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import StatusPill from '@/components/icons/StatusPill.vue'
+
+
+
 </script>
 
 <template>
@@ -11,7 +14,7 @@ import StatusPill from '@/components/icons/StatusPill.vue'
                 </RouterLink>
             </div>
             <div class="links">
-                <RouterLink to="/dashboard" class="nav-links">Dashboard</RouterLink>
+                <RouterLink to="/dashboard/teacher" class="nav-links" v-model="mode">Dashboard</RouterLink>
                 <RouterLink to="/about" class="nav-links">About</RouterLink>
                 <StatusPill />
                 <RouterLink to="/about" class="nav-links">Exit</RouterLink>
