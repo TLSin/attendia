@@ -1,7 +1,11 @@
 <script setup>
 import AdminIcon from '@/components/icons/AdminIcon.vue';
+import router from '@/router';
 import Authentication from '@/services/Authentication';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const firstName = ref('');
 const lastName = ref('');
@@ -21,7 +25,7 @@ const toggleSubmit = async () => {
             { field: lastName, error: lastNameError, label: "Last Name" },
             { field: email, error: emailError, label: "email" },
             { field: password, error: passwordError, label: "Password" },
-        ]
+        ];
 
         let hasError = false;
 
@@ -46,8 +50,10 @@ const toggleSubmit = async () => {
                     password: password.value.trim(),
                 })
                 passwordLengthError.value = '';
-                
-                // console.log(response.data)
+
+                if(response.redirect) {
+                    router.push(response.redirect);
+                }
             }
         }
     }

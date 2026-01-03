@@ -20,7 +20,7 @@ const studentNum = ref('');
 
 const toggleSubmit = (mode) => {
     if (mode == 'teacher') {
-        console.log("you've click me")
+        console.log("you've click me");
     } else {
 
     }
