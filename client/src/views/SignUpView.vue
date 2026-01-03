@@ -5,21 +5,21 @@ import { ref } from 'vue';
 
 const firstName = ref('');
 const lastName = ref('');
-const username = ref('');
+const email = ref('');
 const password = ref('');
 
 const firstNameError = ref('');
 const lastNameError = ref('');
-const usernameError = ref('');
+const emailError = ref('');
 const passwordError = ref('');
-const passwordLenngthError = ref('')
+const passwordLengthError = ref('')
 
 const toggleSubmit = async () => {
     try {
         const fields = [
             { field: firstName, error: firstNameError, label: "First Name" },
             { field: lastName, error: lastNameError, label: "Last Name" },
-            { field: username, error: usernameError, label: "Username" },
+            { field: email, error: emailError, label: "email" },
             { field: password, error: passwordError, label: "Password" },
         ]
 
@@ -36,18 +36,19 @@ const toggleSubmit = async () => {
 
         if (!hasError) {
             if (password.value.length < 8) {
-                passwordLenngthError.value = "The password must be 8 or more characters long"
+                passwordLengthError.value = "The password must be 8 or more characters long";
+                return
             } else {
                 const response = await Authentication.register({
-                    firstName: firstName.value,
-                    lastName: lastName.value,
-                    username: username.value,
-                    password: password.value,
+                    firstname: firstName.value.trim(),
+                    lastname: lastName.value.trim(),
+                    email: email.value.trim(),
+                    password: password.value.trim(),
                 })
-                passwordLenngthError.value = '';
+                passwordLengthError.value = '';
+                
                 // console.log(response.data)
             }
-
         }
     }
     catch (e) {
@@ -76,8 +77,8 @@ const toggleSubmit = async () => {
                     </div>
                 </div>
                 <div class="input-textbox errors">
-                    <input type="text" placeholder="Username" class="textbox" v-model="username">
-                    <p class="error">{{ usernameError }}</p>
+                    <input type="email" placeholder="Email" class="textbox" v-model="email">
+                    <p class="error">{{ emailError }}</p>
                 </div>
                 <div class="input-textbox errors">
                     <input type="password" placeholder="Password" class="textbox" v-model="password">
