@@ -1,11 +1,10 @@
 <script setup>
 import AdminIcon from '@/components/icons/AdminIcon.vue';
-import router from '@/router';
 import Authentication from '@/services/Authentication';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
-const router = useRouter();
+
 
 const firstName = ref('');
 const lastName = ref('');
@@ -17,6 +16,8 @@ const lastNameError = ref('');
 const emailError = ref('');
 const passwordError = ref('');
 const passwordLengthError = ref('')
+
+const router = useRouter();
 
 const toggleSubmit = async () => {
     try {
