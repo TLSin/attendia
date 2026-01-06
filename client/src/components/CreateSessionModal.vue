@@ -1,41 +1,75 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router';
+import Creation from '@/services/Creation';
+import { ref } from 'vue';
 
 const emit = defineEmits(['close']);
 
 const toggleClose = () => {
     emit('close');
 }
+
+const router = useRouter();
+
+const eventName = ref('');
+const subject = ref('');
+const eventType = ref('');
+const date = ref('');
+const time = ref('');
+
+const toggleSubmit = async () => {
+    try {
+        const response = await Creation.event({
+            event_name: eventName.value.trim(),
+            subject: subject.value.trim(),
+            event_type: eventType.value.trim(),
+            date: date.value.trim(),
+            time: time.value.trim(),
+        })
+        console.log(response)
+        router.push({
+            name: 'session'
+        })
+    } catch (error) {
+        console.log(error.response?.error);
+    }
+}
+
 </script>
 
 <template>
     <div class="backdrop" @click.self="toggleClose">
         <div class="modal">
-            <form action="">
+            <form @submit.prevent.self="toggleSubmit">
                 <h2>Create New Session</h2>
                 <div class="input-group">
                     <label for="">Event Name</label>
-                    <input type="text" placeholder="Lab Lesson">
+                    <input type="text" placeholder="Lab Lesson" v-model="eventName">
+                    {{ eventName }}
                 </div>
                 <div class="input-group">
                     <label for="">Subject/Course</label>
-                    <input type="text">
+                    <input type="text" v-model="subject">
+                    {{ subject }}
                 </div>
                 <div class="input-group">
                     <label for="">Event Type</label>
-                    <input type="text">
+                    <input type="text" v-model="eventType">
+                    {{ eventType }}
                 </div>
                 <div class="input-group">
                     <label for="">Date</label>
-                    <input type="date">
+                    <input type="date" v-model="date">
+                    {{ date }}
                 </div>
                 <div class="input-group">
                     <label for="">Start Time</label>
-                    <input type="time">
+                    <input type="time" v-model="time">
+                    {{ time }}
                 </div>
                 <div class="action-buttons">
                     <button class="cancel" @click="toggleClose">Cancel</button>
-                    <RouterLink to="/session" class="create"><button type="submit" class="create">Create Session</button></RouterLink>
+                    <button type="submit" class="create">Create Session</button>
                 </div>
 
             </form>

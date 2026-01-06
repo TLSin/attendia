@@ -1,8 +1,27 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import StatusPill from '@/components/icons/StatusPill.vue'
+import { RouterLink, RouterView, useRouter } from 'vue-router';
+import StatusPill from '@/components/icons/StatusPill.vue';
+import { useUser } from '@/stores/user';
+import { ref } from 'vue';
 
+const router = useRouter();
+const userStore = useUser();
+const active = ref(userStore.setActive.active);
 
+if (userStore.mode == 'teacher' || userStore.mode == 'student') {
+    active.value = true;
+} else {
+    active.value = false;
+}
+
+const logOut = () => {
+    router.push({
+        name: 'home'
+    })
+    userStore.clearUser();
+    active.value = false;
+    console.log('logout');
+}
 
 </script>
 
@@ -14,10 +33,10 @@ import StatusPill from '@/components/icons/StatusPill.vue'
                 </RouterLink>
             </div>
             <div class="links">
-                <RouterLink to="/dashboard/teacher" class="nav-links" v-model="mode">Dashboard</RouterLink>
+                <RouterLink to="/dashboard/teacher" class="nav-links">Dashboard</RouterLink>
                 <RouterLink to="/about" class="nav-links">About</RouterLink>
-                <StatusPill />
-                <RouterLink to="/about" class="nav-links">Exit</RouterLink>
+                <StatusPill :mode="userStore.mode" v-if="active" />
+                <h1 @click.self="logOut" v-if="active">Log out</h1>
             </div>
         </div>
     </nav>
@@ -55,10 +74,15 @@ import StatusPill from '@/components/icons/StatusPill.vue'
     color: var(--l-primary-text);
 }
 
-.links{
+.links {
     display: flex;
     font-size: 0.875rem;
     align-items: center;
     gap: 2rem;
+}
+
+.links h1 {
+    font-size: 0.875rem;
+    cursor: pointer;
 }
 </style>

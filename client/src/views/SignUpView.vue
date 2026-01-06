@@ -49,11 +49,12 @@ const toggleSubmit = async () => {
                     lastname: lastName.value.trim(),
                     email: email.value.trim(),
                     password: password.value.trim(),
-                })
+                });
+                
                 passwordLengthError.value = '';
 
-                if(response.redirect) {
-                    router.push(response.redirect);
+                if(response.data.success) {
+                    router.push(response.data.redirect);
                 }
             }
         }
@@ -89,7 +90,7 @@ const toggleSubmit = async () => {
                 </div>
                 <div class="input-textbox errors">
                     <input type="password" placeholder="Password" class="textbox" v-model="password">
-                    <p class="error">{{ passwordError || passwordLenngthError }}</p>
+                    <p class="error">{{ passwordError || passwordLengthError }}</p>
                 </div>
                 <button type="submit" class="box">Submit</button>
                 <p>Already have a teacher/organizer account? <RouterLink to="/login/teacher" class="link">Click here.

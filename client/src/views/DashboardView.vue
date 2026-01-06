@@ -7,18 +7,24 @@ import AverageAttendanceIcon from '@/components/icons/AverageAttendanceIcon.vue'
 import RecentSessionCard from '@/components/Recent-SessionCard.vue';
 import CreateSessionModal from '@/components/CreateSessionModal.vue';
 import { ref } from 'vue';
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
+import { useUser } from '@/stores/user';
 
+// const route = useRoute();
+// const mode = route.query.mode;
 const showModal = ref(false);
+const userStore = useUser();
+// const stop = ref(true);
 
 const toggleModal = () => {
     showModal.value = !showModal.value;
 }
 
+console.log(userStore)
+// console.log(mode);
 </script>
 
 <template>
-    
     <div class="content">
         <div class="header">
             <h1>Attendance Tracker</h1>
@@ -40,7 +46,7 @@ const toggleModal = () => {
         </div>
     </div>
 
-    <div class="modal" >
+    <div class="modal">
         <CreateSessionModal v-if="showModal" @close="toggleModal" />
     </div>
 </template>

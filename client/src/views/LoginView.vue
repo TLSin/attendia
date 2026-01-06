@@ -4,6 +4,7 @@ import StudentLoginIcon from '@/components/icons/StudentLoginIcon.vue';
 import Authentication from '@/services/Authentication';
 import { ref } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
+import { useUser } from '@/stores/user';
 
 defineProps({
     mode: {
@@ -13,6 +14,7 @@ defineProps({
 })
 
 const router = useRouter();
+const userStore = useUser();
 
 const email = ref('');
 const firstName = ref('');
@@ -30,7 +32,12 @@ const toggleSubmit = async (mode) => {
             });
 
             console.log(response.data.user);
-            router.push()
+            router.push({
+                name: 'dashboard-teacher',
+                // query: { mode: mode } ,
+            });
+            userStore.setMode(mode);
+            setTimeout(()=> window.location.reload(), 1000);
         } catch (error) {
             console.log(error.response?.data?.error);
         }
@@ -71,7 +78,8 @@ const toggleSubmit = async (mode) => {
                     <input type="text" name="name" placeholder="Last Name" class="textbox" v-model="lastName">
                 </div>
                 <input type="text" name="section" placeholder="Section" class="textbox" v-model="section">
-                <input type="text" name="student-number" placeholder="Student Number" class="textbox" v-model="studentNum">
+                <input type="text" name="student-number" placeholder="Student Number" class="textbox"
+                    v-model="studentNum">
                 <button type="submit" class="box">Submit</button>
             </form>
         </div>
@@ -139,14 +147,14 @@ const toggleSubmit = async (mode) => {
     margin-top: 2rem;
 }
 
-.name{
+.name {
     display: flex;
     width: 100%;
     overflow: hidden;
     gap: 10px;
 }
 
-.name input{
+.name input {
     background-color: var(--l-input-fields-bg);
     border: var(--l-borders);
     padding: 15px;

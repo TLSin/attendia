@@ -11,19 +11,36 @@ const active2 = ref(false);
 const active3 = ref(false);
 
 const toggleActive = (mode) => {
-    if (mode == 'QR') {
-        active1.value = true;
-        active2.value = false;
-        active3.value = false;
-    } else if (mode == 'Scan') {
-        active1.value = false;
-        active2.value = true;
-        active3.value = false;
-    } else {
-        active1.value = false;
-        active2.value = false;
-        active3.value = true;
+    switch (mode) {
+        case ('QR'):
+            active1.value = true;
+            active2.value = false;
+            active3.value = false;
+            break;
+        case ('Scan'):
+            active1.value = false;
+            active2.value = true;
+            active3.value = false;
+            break;
+        case ('History'):
+            active1.value = false;
+            active2.value = false;
+            active3.value = true;
+            break;
     }
+    // if (mode == 'QR') {
+    //     active1.value = true;
+    //     active2.value = false;
+    //     active3.value = false;
+    // } else if (mode == 'Scan') {
+    //     active1.value = false;
+    //     active2.value = true;
+    //     active3.value = false;
+    // } else {
+    //     active1.value = false;
+    //     active2.value = false;
+    //     active3.value = true;
+    // }
 }
 </script>
 
@@ -146,7 +163,7 @@ const toggleActive = (mode) => {
     color: var(--d-primary-text);
 }
 
-.actions button:focus{
+.actions button:focus {
     background-color: var(--l-primary-button-bg);
     color: var(--d-primary-text);
 }

@@ -18,7 +18,7 @@ const sections = [
     { id: 8, section: '1007' },
     { id: 9, section: '1008' },
     { id: 10, section: '1009' },
-]
+];
 
 const modalType = ref('')
 const title = ref('');
